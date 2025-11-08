@@ -1,44 +1,65 @@
 # data_challenge_M2MIA
 
-Objectif
----------
-Ce notebook met en œuvre différentes approches d’apprentissage supervisé pour résoudre un problème de classification multiclasse à partir d’un jeu de données tabulaire. 
-L’objectif est de prédire la variable cible 'reservation_status' ∈ {0,1,2} à partir d’un ensemble mixte de variables numériques et catégorielles.
+Objectif général
+----------------
+Ce projet s’inscrit dans le cadre d’un data challenge portant sur deux problématiques distinctes :
+1. Un problème de classification multiclasse.
+2. Un problème de régression.
 
-Organisation du notebook
-------------------------
-1. Chargement et préparation des données :
-   - Importation du jeu d’entraînement et du jeu de test.
-   - Séparation des covariables (X_train, X_test) et de la cible (Y_train).
-   - Identification des colonnes numériques et catégorielles.
+L’objectif est de concevoir, évaluer et comparer plusieurs modèles d’apprentissage supervisé sur des jeux de données tabulaires.
+Chaque tâche est accompagnée d’une analyse exploratoire approfondie et d’une justification méthodologique complète.
 
-2. Prétraitement :
-   - Utilisation d’un ColumnTransformer pour appliquer :
-       * StandardScaler sur les variables numériques (si nécessaire).
-       * OneHotEncoder sur les variables catégorielles.
-   - Intégration du prétraitement dans un Pipeline unique par modèle.
+------------------------------------------------------
+Organisation des notebooks
+------------------------------------------------------
 
-3. Modèles testés :
-   a) Régression logistique multinomiale :
-      - Modèle linéaire de référence.
-      - Hyperparamètre principal : coefficient de régularisation C.
-      - Optimisation par validation croisée (GridSearchCV).
+1. analyse_exploratoire_classification_data_challenge.ipynb
+   --------------------------------------------------
+   - Étude du jeu de données de classification (environ 60 000 observations).
+   - Analyse des distributions des variables quantitatives et qualitatives.
+   - Étude des corrélations et réalisation d’une Analyse en Composantes Principales (ACP).
+   - Visualisations : histogrammes, boxplots, matrice de corrélation, cercle des corrélations, éboulis des valeurs propres.
+   - Identification des variables les plus discriminantes pour la tâche de classification.
 
-   b) Forêt aléatoire (Random Forest) :
-      - Modèle non linéaire basé sur un ensemble d’arbres de décision.
-      - Recherche d’hyperparamètres par RandomizedSearchCV avec validation croisée.
-      - Analyse des importances de Gini pour interpréter les résultats.
+2. analyse_exploratoire_regression_data_challenge.ipynb
+   --------------------------------------------------
+   - Exploration statistique du jeu de données de régression.
+   - Analyse univariée et bivariée des covariables.
+   - Étude des relations linéaires et non linéaires avec la variable cible.
+   - ACP et visualisations pour détecter la multicolinéarité et les variables influentes.
+   - Préparation des données pour la phase de modélisation.
 
-   c) SVM à noyau RBF (One-vs-One) :
-      - Modèle à marges maximales adapté à la classification multiclasse.
-      - Optimisation des hyperparamètres C et gamma via RandomizedSearchCV.
-      - Évaluation par validation croisée et matrice de confusion OOF.
+3. modeles_predictifs_classification_data_challenge.ipynb
+   --------------------------------------------------
+   - Implémentation et comparaison de trois modèles :
+       * Régression logistique multinomiale
+       * Forêt aléatoire (Random Forest)
+       * SVM à noyau RBF (extension One-vs-One)
+   - Optimisation des hyperparamètres via validation croisée (GridSearchCV, RandomizedSearchCV).
+   - Évaluation selon le F1-score pondéré (métrique du challenge Kaggle).
+   - Visualisation des matrices de confusion et rapports de classification.
+   - Sélection du modèle final et export du fichier de soumission Kaggle.
 
-4. Évaluation des modèles :
-   - Calcul du F1-score pondéré, de la précision et du rappel.
-   - Validation croisée (k=5) pour évaluer la performance généralisée.
-   - Visualisation des matrices de confusion et des rapports de classification.
+4. modeles_predictifs_regression_data_challenge.ipynb
+   --------------------------------------------------
+   - Implémentation et comparaison de trois modèles de régression :
+       * Régression linéaire multiple
+       * Forêt aléatoire régressive
+       * XGBoost regressor
+   - Évaluation selon le R^2 .
+   - Validation croisée et analyse des erreurs résiduelles.
+   - Visualisation des performances comparées.
+   - Choix du modèle final et export du fichier de prédictions.
 
-5. Soumission finale :
-   - Génération des prédictions sur la base de test (X_test).
-   - Export des résultats au format CSV pour soumission sur Kaggle.
+------------------------------------------------------
+Résultats synthétiques
+------------------------------------------------------
+- En classification : la Forêt Aléatoire s’est révélée être le meilleur compromis entre performance (F1-score élevé), robustesse et capacité de généralisation.
+- En régression : le modèle XGBoost a offert le R^2 le plus grand, surpassant les modèles linéaires et à base d’arbres standards.
+
+------------------------------------------------------
+Auteur
+------------------------------------------------------
+Projet réalisé par : [LARIBI Yanis, KTAIB Achraf]
+Encadrant : [COUDRAY Olivier]
+Date : [année 2025-2026]
