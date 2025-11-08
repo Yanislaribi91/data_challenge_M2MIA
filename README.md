@@ -45,7 +45,7 @@ Organisation des notebooks
    - Implémentation et comparaison de trois modèles de régression :
        * Régression linéaire multiple
        * Forêt aléatoire régressive
-       * XGBoost regressor
+       * XGBoost, CatBoost regressor
    - Évaluation selon le R^2 .
    - Validation croisée et analyse des erreurs résiduelles.
    - Visualisation des performances comparées.
@@ -55,7 +55,7 @@ Organisation des notebooks
 Résultats synthétiques
 ------------------------------------------------------
 - En classification : la Forêt Aléatoire s’est révélée être le meilleur compromis entre performance (F1-score élevé), robustesse et capacité de généralisation.
-- En régression : le modèle XGBoost a offert le R^2 le plus grand, surpassant les modèles linéaires et à base d’arbres standards.
+- En régression : le modèle CatBoost a offert le R^2 le plus grand, surpassant les modèles linéaires et à base d’arbres standards.
 
 ------------------------------------------------------
 Auteur
