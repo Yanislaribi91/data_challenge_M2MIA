@@ -7,7 +7,7 @@ Ce projet s’inscrit dans le cadre d’un data challenge portant sur deux probl
 2. Un problème de régression.
 
 L’objectif est de concevoir, évaluer et comparer plusieurs modèles d’apprentissage supervisé sur des jeux de données tabulaires.
-Chaque tâche est accompagnée d’une analyse exploratoire approfondie et d’une justification méthodologique complète.
+Chaque tâche est accompagnée d’une analyse exploratoire des données.
 
 ------------------------------------------------------
 Organisation des notebooks
